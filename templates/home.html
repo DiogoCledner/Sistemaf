@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook Integration</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Sistema</h1>
+    <a href="{{ url_for('signup') }}">Cadastre-se</a>
+    <a href="{{ url_for('login_facebook') }}">Conectar com Facebook</a>
+
+    <form method="POST" action="{{ url_for('post_to_facebook') }}">
+        <textarea name="message" placeholder="Digite sua mensagem para o Facebook"></textarea>
+        <button type="submit">Publicar no Facebook</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>
